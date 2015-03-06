@@ -12,7 +12,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="mk3_rear_panel.DXF">
+   sodipodi:docname="arr01.svg">
   <metadata
      id="metadata204">
     <rdf:RDF>
@@ -21,7 +21,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -48,9 +48,9 @@
      inkscape:object-nodes="true"
      inkscape:snap-intersection-paths="true"
      inkscape:snap-smooth-nodes="true"
-     inkscape:zoom="0.3854424"
-     inkscape:cx="1479.7475"
-     inkscape:cy="611.69527"
+     inkscape:zoom="0.77088477"
+     inkscape:cx="1910.7558"
+     inkscape:cy="625.29432"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -1106,7 +1106,7 @@
     <g
        id="g3199-9"
        inkscape:label="0"
-       transform="matrix(-1,0,0,-1,1372.2319,873.79129)">
+       transform="matrix(-1,0,0,-1,1372.2319,880.27734)">
       <path
          id="path3201-4"
          d="m -87.5876,987.88455 0,-140.95065"
@@ -1936,7 +1936,7 @@
     <g
        id="g5089"
        inkscape:label="0"
-       transform="matrix(1,0,0,-1,1737.6148,817.55577)">
+       transform="matrix(1,0,0,-1,1737.6148,816.55577)">
       <path
          id="path5091"
          d="m -49.251969,775.45276 c 0,-2.02545 -1.080559,-3.89703 -2.834645,-4.90976"
