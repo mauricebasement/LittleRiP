@@ -7,4 +7,21 @@ module profile() {
             polygon(points=[[-10,0],[0,0],[0,7],[-4,7],[-8,2],[-10,2]]);
      circle(r=2.5);
 }    
-profile();
+module glider() {
+    difference() {
+        union() {
+            translate([0,5])square([12,10],center=true);
+            translate([0,-1])square([20,2],center=true);
+        }
+        translate([0,10])profile();
+    }
+}
+
+module extrusion() {
+    difference() {
+        offset(r=-0.1)glider();
+        offset(r=-0.8)glider();
+    }
+}
+
+extrusion();
