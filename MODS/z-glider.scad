@@ -7,8 +7,8 @@ module profile() {
             polygon(points=[[-10,0],[0,0],[0,7],[-4,7],[-8,2],[-10,2]]);
      circle(r=2.5);
 }    
-module glider() {
-    offset(r=-0.1)difference() {
+module glider(tolerance=0.15) {
+    offset(r=-tolerance)difference() {
         union() {
             translate([0,5])square([5,10],center=true);
             translate([0,-1])square([20,2],center=true);
@@ -16,35 +16,35 @@ module glider() {
         translate([0,10])profile();
     }
 }
-
-module extrusion(h=20,m=0.5) {
+module extrusion(h=20,m=0.5,margin=0.3,d=0.15,r=1) {
     difference() {
         union(){
             difference() {
                 linear_extrude(height=h)glider();
-                translate([0,0,m])linear_extrude(height=h-m)offset(r=-0.3)glider();
+                translate([0,0,m])linear_extrude(height=h-2*m)offset(r=-margin)glider();
             }
-            linear_extrude(height=h)support(true)glider();
+            linear_extrude(height=h)support(true,r=r,d=d)glider();
         }
         linear_extrude(height=h)union() {
-            honeycomb_drainholes();
             difference() {
-                glider();
-                offset(r=-0.3)glider();
+                honeycomb_drainholes(r=r,d=d);
+                difference() {
+                    offset(r=0.1)glider();
+                    offset(r=-margin)glider();
+                }
             }
+        }
     }
 }
-
 extrusion();
-
 module support_raw(x=20,y=20,d=1.1,t=0.15) {
     for(i=[-1,1])for(j=[0:d:x/2])translate([i*j,0])square([t,y],center=true);
     for(i=[-1,1])for(j=[0:d:x/2])translate([0,i*j])square([x,t],center=true);
 }
-module support(comb=false) {
+module support(comb=false,d,r) {
     intersection() {
-        if(comb==false)support_raw();
-        if(comb==true)support_honeycomb();
+        if(comb==false)support_raw(d=d,r=r);
+        if(comb==true)support_honeycomb(d=d,r=r);
         children();
     }
 }
@@ -56,8 +56,7 @@ module support_honeycomb(x=10,y=10,r=0.7,d=0.1,fn=6) {
         }
     }
 }
-
-module honeycomb_drainholes(x=10,y=10,r=0.7,d=0.1,fn=6,o1=1,o2=1,ra=0.25) {
+module honeycomb_drainholes(x=10,y=10,r=0.7,d=0.1,fn=6,o1=1,o2=1,ra=0.3) {
     for(k=[-1,1])for(l=[0:(2*(r+r*sin(30)-d))*o1:x]){
         for(i=[1,-1])for(j=[0:(2*r*cos(30)-d)*o2:y]) {
             translate([k*l,i*j])circle(r=ra);
@@ -70,5 +69,4 @@ module comb(r,d,fn) {
         circle(r=r,$fn=fn);
         circle(r=r-d,$fn=fn);
     }
-
 }
