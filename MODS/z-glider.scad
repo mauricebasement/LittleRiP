@@ -17,10 +17,10 @@ module glider() {
     }
 }
 
-module extrusion() {
+module extrusion(h=16,m=0.5) {
     difference() {
-        offset(r=-0.1)glider();
-        offset(r=-0.8)glider();
+        linear_extrude(height=h)offset(r=-0.1)glider();
+        translate([0,0,m])linear_extrude(height=h-2*m)offset(r=-0.8)glider();
     }
 }
 
