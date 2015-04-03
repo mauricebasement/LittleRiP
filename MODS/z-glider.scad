@@ -10,7 +10,7 @@ module profile() {
 module glider(blockY=8,tolerance=0.1) {
     offset(r=-tolerance)difference() {
         union() {
-            translate([0,5])square([8,10],center=true);
+            translate([0,5])square([5,10],center=true);
             translate([0,-0.5*blockY])square([20,blockY],center=true);          
         }
         translate([0,10])profile();
@@ -35,9 +35,9 @@ module extrusion(h=20,m=0.5,margin=0.2,d=0.1,r=1) {
                 }
             }
         }
-        scale([1.1,.9,.9])ptr()hull()pipe();
+        scale([1.1,1,1])ptr()hull()pipe();
     }
-    ptr()pipe();
+    ptr()pipe();    
 }
 extrusion();
 
