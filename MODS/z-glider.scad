@@ -10,13 +10,13 @@ module profile() {
 module glider(tolerance=0.15) {
     offset(r=-tolerance)difference() {
         union() {
-            translate([0,5])square([5,10],center=true);
+            translate([0,5])square([15,10],center=true);
             translate([0,-1])square([20,2],center=true);
         }
         translate([0,10])profile();
     }
 }
-module extrusion(h=20,m=0.5,margin=0.3,d=0.15,r=1) {
+module extrusion(h=20,m=0.5,margin=0.3,d=0.1,r=0.6) {
     difference() {
         union(){
             difference() {
