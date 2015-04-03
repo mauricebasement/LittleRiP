@@ -16,7 +16,7 @@ module glider(tolerance=0.15) {
         translate([0,10])profile();
     }
 }
-module extrusion(h=20,m=0.5,margin=0.3,d=0.15,r=1) {
+module extrusion(h=20,m=0.5,margin=0.2,d=0.1,r=1) {
     difference() {
         union(){
             difference() {
