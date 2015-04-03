@@ -54,7 +54,7 @@ module screw_complete() {
 }
 module screw_drain() {
     intersection() {
-        honeycomb_drainholes(r=1.2,ra=0.4);
+        honeycomb_drainholes(r=1.2,ra=0.5);
         offset(r=-0.2)projection()screw_complete();
     }
 }
