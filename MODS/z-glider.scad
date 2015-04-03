@@ -7,7 +7,7 @@ module profile() {
             polygon(points=[[-10,0],[0,0],[0,7],[-4,7],[-8,2],[-10,2]]);
      circle(r=2.5);
 }    
-module glider(tolerance=0.15) {
+module glider(tolerance=0.1) {
     offset(r=-tolerance)difference() {
         union() {
             translate([0,5])square([5,10],center=true);
@@ -16,7 +16,7 @@ module glider(tolerance=0.15) {
         translate([0,10])profile();
     }
 }
-module extrusion(h=20,m=0.5,margin=0.3,d=0.15,r=1) {
+module extrusion(h=20,m=0.5,margin=0.35,d=0.2,r=1) {
     difference() {
         union(){
             difference() {
@@ -35,8 +35,34 @@ module extrusion(h=20,m=0.5,margin=0.3,d=0.15,r=1) {
             }
         }
     }
+    screw_extrusion();
 }
 extrusion();
+module screw() {
+    linear_extrude(height=17)
+    difference() {
+        hull() {
+            translate([-3,0])square([1,5],center=true);
+            circle(r=2.5);
+        }
+        circle(r=1.5);
+    }
+}
+module screw_complete() {
+    for(z=[0,15])translate([10-0.1,-5.5+0.1,z+2.5])rotate([90,0,-90])screw();
+}
+module screw_drain() {
+    intersection() {
+        honeycomb_drainholes(r=1.2,ra=0.4);
+        offset(r=-0.2)projection()screw_complete();
+    }
+}
+module screw_extrusion() {
+    difference() { 
+        screw_complete();
+        linear_extrude(height=20)screw_drain();
+    }
+}
 module support_raw(x=20,y=20,d=1.1,t=0.15) {
     for(i=[-1,1])for(j=[0:d:x/2])translate([i*j,0])square([t,y],center=true);
     for(i=[-1,1])for(j=[0:d:x/2])translate([0,i*j])square([x,t],center=true);
@@ -56,7 +82,7 @@ module support_honeycomb(x=10,y=10,r=0.7,d=0.1,fn=6) {
         }
     }
 }
-module honeycomb_drainholes(x=10,y=10,r=0.7,d=0.1,fn=6,o1=1,o2=1,ra=0.3) {
+module honeycomb_drainholes(x=10,y=10,r=0.7,d=0.1,fn=6,o1=1,o2=1,ra=0.4) {
     for(k=[-1,1])for(l=[0:(2*(r+r*sin(30)-d))*o1:x]){
         for(i=[1,-1])for(j=[0:(2*r*cos(30)-d)*o2:y]) {
             translate([k*l,i*j])circle(r=ra);
