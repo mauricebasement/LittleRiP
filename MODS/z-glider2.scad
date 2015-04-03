@@ -35,7 +35,7 @@ module extrusion(h=20,m=0.5,margin=0.2,d=0.1,r=1) {
                 }
             }
         }
-        scale([1.1,.9,.9])ptr()hull()pipe();
+        scale([1.1,1,1])ptr()hull()pipe();
     }
     ptr()pipe();
 }
