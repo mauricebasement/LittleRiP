@@ -37,7 +37,18 @@ module extrusion(h=20,m=0.5,margin=0.2,d=0.1,r=1) {
         }
         scale([1.1,1,1])ptr()hull()pipe();
     }
-    ptr()pipe();    
+    difference() {
+        ptr()pipe();
+        linear_extrude(height=h)union() {
+            difference() {
+                honeycomb_drainholes(r=r,d=d);
+                difference() {
+                    offset(r=0.1)glider();
+                    offset(r=-margin)glider();
+                }
+            }
+        }
+    }
 }
 extrusion();
 
