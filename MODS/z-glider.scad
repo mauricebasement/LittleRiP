@@ -57,8 +57,8 @@ module ptr() {
 }
 module pipe(r=1.5,m=1) {
     difference() {
-        cylinder(h=16.8,r=r+m,center=true);
-        cylinder(h=16.8,r=r,center=true);
+        cylinder(h=17,r=r+m,center=true);
+        cylinder(h=17,r=r,center=true);
     }
 }
 module support_raw(x=20,y=20,d=1.1,t=0.15) {
