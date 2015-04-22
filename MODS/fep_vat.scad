@@ -9,12 +9,22 @@ module tensionerBase() {
     }
 }
 module tensionerExtrusion() {
-    linear_extrude(height=6)gasket();
+    intersection(){
+        minkowski() {
+            linear_extrude(height=4)gasket();
+            sphere(r=2,$fn=20);
+        }
+        translate([0,0,20])cube([500,500,40],center=true);
+    }
+}
+module tensioner() {
+    tensionerBase();
+    tensionerExtrusion();
 }
 module gasket() {
     difference() {
-        offset(r=4)platformSquares();
-        platformSquares();
+        offset(r=2.5)platformSquares();
+        offset(r=2)platformSquares();
     }
 }
 module gasketMold() {
@@ -24,9 +34,8 @@ module gasketMold() {
         cube([70,50,5],center=true);
     }
 }
-module vat() {
-    
-tensionerBase();
-tensionerExtrusion();
-gasketMold();
-!
+//module vat() {
+
+tensioner();    
+*gasketMold();
+
