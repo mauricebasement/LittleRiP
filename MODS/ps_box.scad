@@ -21,13 +21,13 @@ module back(front=false) {
 }
 module top() {
     difference() {
-        square([x+12,z+18],center=true);
+        square([x+3,z+15],center=true);
         bottom(true);
     }
 }
 module bottom(top=false) {
         for(i=[-1,1])translate([i*37/2,126/2-5])circle(r=2);
-        for(i=[-1,1])for(j=[-1,1])translate([i*56/2,j*(-137/2)])circle(r=1.5);
+        //for(i=[-1,1])for(j=[-1,1])translate([i*56/2,j*(-137/2)])circle(r=1.5);
         if(top==true)for(i=[-60:10:60])translate([0,i])square([30,3],center=true);
         for(i=[-1,1])for(j=[-50,50,-20,20])translate([i*(x/2-1.5),j])square(3,center=true);
         for(j=[-1,1])translate([0,j*(z/2+1.5)])square([x-6,3],center=true);
