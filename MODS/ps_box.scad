@@ -1,5 +1,5 @@
 $fn=50;
-x=51;
+x=54;
 y=43;
 z=126;
 
@@ -16,7 +16,7 @@ module back(front=false) {
         if(front==true){
             translate([0,17])square([8 ,5],center=true);
         }   
-        for(i=[-1,1])for(j=[-23,23,-10,10])translate([i*24,j])square(3,center=true);
+        for(i=[-1,1])for(j=[-23,23,-10,10])translate([i*25.5,j])square(3,center=true);
     }
 }
 module top() {
