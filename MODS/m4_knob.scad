@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 $fn=50;
 radius=20;
 
+=======
+radius=20;
+$fn=200;
+>>>>>>> origin/master
 module bottom() {
     difference() {
         cylinder(r=radius,h=4);
