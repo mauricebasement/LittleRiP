@@ -1,8 +1,10 @@
-$fn=200;
+$fn=50;
+radius=20;
+
 module bottom() {
     difference() {
-        cylinder(r=13,h=4);
-        for(i=[0:20:360])rotate([0,0,i])translate([14,0])scale([1,2,1])cylinder(r=3,h=8);
+        cylinder(r=radius,h=4);
+        for(i=[0:20:360])rotate([0,0,i])translate([radius/13*14,0])scale([1,2,1])cylinder(r=3,h=8);
         cylinder(r1=9/2,r2=8.2/2,h=6,$fn=6);            
     }
 }
